@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
 
   check(): void {
     this.status = 'checking...';
-    this.backend.getHealth().subscribe({
+    this.backend.getLiveness().subscribe({
       next: (res) => this.status = JSON.stringify(res),
       error: (err) => this.status = 'unavailable (' + (err.message || err.statusText || err) + ')'
     });
