@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Frontend</title>
+  </head>
+  <body>
+    <h1>Frontend</h1>
+    <p>This is a minimal frontend. Backend health: <span id="status">checking...</span></p>
+    <script>
+      fetch('/api/health')
+        .then(r => r.json())
+        .then(j => document.getElementById('status').textContent = JSON.stringify(j))
+        .catch(() => document.getElementById('status').textContent = 'unavailable');
+    </script>
+  </body>
+</html>

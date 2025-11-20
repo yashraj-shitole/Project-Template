@@ -1,0 +1,3 @@
+Note: When running via Docker Compose the frontend is in the same network as the backend and can reach it at http://backend:3000
+
+For local development, if you run frontend outside Docker, set up a proxy or call the backend at its host/port.

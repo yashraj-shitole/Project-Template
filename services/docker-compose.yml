@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo:6.0
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    volumes:
+      - ../database/data:/data/db
+    ports:
+      - "27017:27017"
+
+  backend:
+    build: ../backend
+    ports:
+      - "3000:3000"
+    environment:
+      MONGO_URI: "mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@mongo:27017/?authSource=admin"
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ../frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend

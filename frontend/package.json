@@ -1,0 +1,37 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve --host 0.0.0.0 --port 4200 --proxy-config proxy.conf.json",
+    "build": "ng build",
+    "build:prod": "ng build --configuration production",
+    "test": "ng test --watch=false",
+    "lint": "ng lint",
+    "clean": "rimraf node_modules dist",
+    "start:static": "npx http-server ./dist/frontend -p 4200",
+    "serve:prod": "npm run build:prod && npm run start:static"
+  },
+  "dependencies": {
+    "@angular/animations": "latest",
+    "@angular/common": "latest",
+    "@angular/compiler": "latest",
+    "@angular/core": "latest",
+    "@angular/forms": "latest",
+    "@angular/platform-browser": "latest",
+    "@angular/platform-browser-dynamic": "latest",
+    "@angular/router": "latest",
+    "rxjs": "latest",
+    "tslib": "latest",
+    "zone.js": "latest"
+  },
+  "devDependencies": {
+    "@angular/cli": "latest",
+    "@angular/compiler-cli": "latest",
+    "@angular-devkit/build-angular": "latest",
+    "typescript": "latest",
+    "rimraf": "latest",
+    "http-server": "latest"
+  }
+}
